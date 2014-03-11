@@ -1,0 +1,57 @@
+!!!
+html
+  head
+    meta( name="viewport", content="width=device-width, initial-scale=1.0" )
+    meta( name="keywords", content=keywords )
+    meta( name="description", content=description )
+    title.
+      #{name} - #{tagline}
+    link( rel="stylesheet", href="http://fonts.googleapis.com/css?family=Maven+Pro" )
+    link( rel="stylesheet", href="/theme/default.css" media="screen" )
+    script( type="text/javascript", src="dist/nsls.js" )
+  body
+
+    header
+      .row.centered
+        .logo.col-3 nsls
+        nav.main.col-9
+          ul
+            li
+              a( href="./#get-started" ) Get started
+            li
+              a( href="./#api" ) API
+            li
+              a( href="https://github.com/rudylattae/nsls" ) GitHub
+            li
+              <iframe src="http://ghbtns.com/github-btn.html?user=rudylattae&repo=nsls&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20"></iframe>
+
+
+    .preface
+      .row.centered
+        section.col-12
+          p.tagline #{tagline}
+          include ./_partials/pulse-check.jade
+
+        section.col-6
+          include ./_partials/blurb.md
+
+        section.facts.col-6
+          include ./_partials/facts.jade
+
+      .row.centered
+        hr.divider
+
+
+    main
+      .row.centered
+        article.col-12
+          !=yield
+
+
+    footer
+      .row.centered
+        .col-12 
+          small #{copyright}
+
+
+    script( type="text/javascript", src="lib/prism.js" )

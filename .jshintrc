@@ -1,0 +1,30 @@
+{
+  "camelcase": true,
+  "eqeqeq": true,
+  "newcap": true,
+  "noarg": true,
+  "noempty": true,
+  "nonew": true,
+  "undef": true,
+  "unused": true,
+  "trailing": true,
+  "boss": true,
+  "eqnull": true,
+  "strict": true,
+  "immed": true,
+  "expr": true,
+  "latedef": "nofunc",
+  "quotmark": "single",
+  "indent": 2,
+  "node": true,
+  "globals": {
+    "window": true,
+    "localStorage": true,
+    "describe": true,
+    "it": true,
+    "expect": true,
+    "afterEach": true,
+    "beforeEach": true,
+    "nsls": true
+  }
+}

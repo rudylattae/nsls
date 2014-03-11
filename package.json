@@ -1,0 +1,47 @@
+{
+  "name": "nsls",
+  "version": "0.0.0",
+  "description": "Micro namespaced localStorage",
+  "homepage": "http://rudylattae.github.io/tote",
+  "main": "nsls.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "harp server www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rudylattae/nsls.git"
+  },
+  "keywords": [
+    "nsls",
+    "localStorage",
+    "browser",
+    "storage",
+    "data",
+    "namespace",
+    "namespaced"
+  ],
+  "author": "Rudy Lattae <rudylattae@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rudylattae/nsls/issues"
+  },
+  "devDependencies": {
+    "gulp": "~3.5.2",
+    "gulp-rename": "~1.0.0",
+    "gulp-uglify": "~0.2.1",
+    "gulp-concat": "~2.1.7",
+    "gulp-git": "~0.3.2",
+    "gulp-jshint": "~1.4.2",
+    "jshint-stylish": "~0.1.5",
+    "gulp-bump": "^0.1.5",
+    "gulp-size": "^0.1.3",
+    "run-sequence": "^0.3.6",
+    "gulp-exec": "^1.0.4",
+    "gulp-task-listing": "~0.2.2",
+    "gulp-header": "~1.0.2",
+    "gulp-wrap-umd": "~0.2.0",
+    "gulp-clean": "~0.2.4",
+    "gulp-wrap": "~0.3.0"
+  }
+}

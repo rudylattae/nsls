@@ -1,0 +1,13 @@
+{
+  "globals": {
+    "name": "nsls",
+    "tagline": "Micro namespaced localStorage.",
+    "keywords": "",
+    "description": "",
+    "version": "v0.0.0-a",
+    "license": "Open Source -- MIT",
+    "status": "Vaporware",
+    "releaseDate": "Unreleased",
+    "copyright": "Copyright &copy; 2014 Rudy Lattae"
+  }
+}
