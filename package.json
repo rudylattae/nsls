@@ -2,7 +2,7 @@
   "name": "nsls",
   "version": "0.1.0-a",
   "description": "Micro namespaced localStorage",
-  "homepage": "http://rudylattae.github.io/tote",
+  "homepage": "http://rudylattae.github.io/nsls",
   "main": "nsls.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
