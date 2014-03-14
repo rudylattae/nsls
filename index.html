@@ -1,0 +1,127 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="keywords" content=""><meta name="description" content=""><title>nsls - Micro namespaced localStorage.</title><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Maven+Pro"><link rel="stylesheet" href="/theme/default.css" media="screen"><script type="text/javascript" src="dist/nsls.js"></script></head><body><header><div class="row centered"><div class="logo col-3">nsls</div><nav class="main col-9"><ul><li><a href="./#get-started">Get started</a></li><li><a href="./#api">API</a></li><li><a href="https://github.com/rudylattae/nsls">GitHub</a></li><li><iframe src="http://ghbtns.com/github-btn.html?user=rudylattae&repo=nsls&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20"></iframe></li></ul></nav></div></header><div class="preface"><div class="row centered"><section class="col-12"><p class="tagline">Micro namespaced localStorage.</p><p class="note note-danger"><strong>IMPORTANT: </strong>This is actively under development and the API will be evolving
+rapidly so you should not use it in production. If you like what you
+see so far, star it on GitHub so I know you want to use it.</p></section><section class="col-6"><pre><code class="language-javascript">var ls = nsls(&#39;example-1&#39;);
+
+ls.setItem(&#39;what&#39;, &#39;A quick example&#39;);
+ls.getItem(&#39;what&#39;)
+// &quot;A quick example&quot;
+
+ls.setItem(&#39;number&#39;, 500);
+ls.getItem(&#39;number&#39;);
+//  &quot;500&quot;
+
+ls.removeItem(&#39;number&#39;);
+ls.getItem(&#39;number&#39;);
+// null</code></pre>
+</section><section class="facts col-6"><dl class="well muted"><dt>Status</dt><dd>Vaporware</dd><dt>Version</dt><dd>v0.0.0-a | <date>Unreleased</date></dd><dt>License</dt><dd>Open Source -- MIT</dd><dt>Environments</dt><dd>Browser</dd><dt>Resources</dt><dd><a href="./spec/" title="Run the nsls specs in your browser">Specs</a>, <a href="http://jsperf.com/nsls-vs-native-storage" title="nsls vs native localStorage on jsperf.com">jsPerf</a>, <a href="https://github.com/rudylattae/nsls" title="Source repo and issue tracker">GitHub</a></dd><hr class="divider"><dt>Install with</dt><dd>Bower, Component... soon</dd><dt>Download</dt><dd><a href="dist/nsls.js" class="btn btn-primary btn-small">Full (4.2k)</a><a href="dist/nsls.min.js" class="btn btn-small">Minified (1.4k)</a></dd><dt>Embed</dt><dd><a href="dist/nsls-embed.js" class="btn btn-small">Full (4.2k)</a><a href="dist/nsls-embed.min.js" class="btn btn-small">Minified (1.4k)</a></dd></dl></section></div><div class="row centered"><hr class="divider"></div></div><main><div class="row centered"><article class="col-12"><p><a name="get-started"></a></p>
+<h2>Get started</h2>
+<p class="note note-info">
+This site includes a copy of the latest version of nsls. If you wish, you may
+try out any of the examples on the site in your browser console.
+</p>
+
+<p>To get started, first download/install the library then include it in your markup/code.</p>
+<h3>Install</h3>
+<p><small class="muted">If you just want a regular download, refer to the download
+buttons provided earlier.</small></p>
+<p><strong>Bower</strong></p>
+<pre><code class="language-bash">bower install nsls</code></pre>
+<p><strong>npm</strong></p>
+<pre><code class="language-bash">npm install nsls --save</code></pre>
+<h3>Import</h3>
+<p><strong>AMD loader environment</strong></p>
+<pre><code class="language-javascript">// myModule.js
+define([&#39;nsls&#39;], function( nsls ){
+  // do something interesting...
+});</code></pre>
+<p><strong>node.js or using a Common JS loader</strong></p>
+<pre><code class="language-javascript">var nsls = require(&#39;nsls&#39;)</code></pre>
+<p>If you want to use <code>nsls</code> as a regular browser global, just include it in your markup:</p>
+<pre><code class="language-markup">&lt;script src=&quot;lib/nsls.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code></pre>
+<h3>Basic usage</h3>
+<p>This example illustrates the full API; <code>set</code>, <code>get</code> and <code>remove</code> which are
+aliases for the native localStorage methods <code>setItem</code>, <code>getItem</code> and
+<code>removeItem</code>.</p>
+<pre><code class="language-javascript">var ls = nsls(&#39;basics&#39;);
+
+// store some text
+ls.set(&#39;description&#39;, &#39;Basic usage example&#39;);
+console.log( ls.get(&#39;description&#39;) );
+// &quot;A quick example&quot;
+
+// store a number
+ls.set(&#39;number&#39;, 500);
+console.log( ls.get(&#39;number&#39;) );
+//  &quot;500&quot;  &lt;- localStorage only deals with strings
+
+// remove an item
+ls.remove(&#39;number&#39;);
+console.log( ls.get(&#39;number&#39;) );
+// null</code></pre>
+<h3>Advanced usage</h3>
+<p>The one value that this library adds to your workflow is it transparently prefixes
+the keys you use to access locaStorage data. This reduces the chances of key
+collisions with other libraries or other aspects of your code.</p>
+<p>So while using this library, you are limited to working with only strings values.</p>
+<p>If you want to store and retrieve anything other than strings, you need to provide
+the mechanism to handle serialization / deserialization.</p>
+<p><code>JSON.stringify</code> and <code>JSON.parse</code> are usually a simple solution.</p>
+<pre><code class="language-javascript">var ls = nsls(&#39;another-space&#39;),
+  serialize = JSON.stringify,
+  deserialize = JSON.parse,
+  value;
+
+// string as before
+ls.set(&#39;str&#39;, serialize(&#39;A regular string&#39;);
+value = deserialize( ls.get(&#39;str&#39;) );
+console.log( value );
+// &quot;A regular string&quot;
+
+// and now a number
+ls.set(&#39;num&#39;, serialize( 500 ));
+value = deserialize( ls.get(&#39;num&#39;) );
+console.log( value );
+// 500
+
+// then booleans
+ls.set(&#39;yes&#39;, serialize( true ));
+value = deserialize( ls.get(&#39;yes&#39;) );
+console.log( value );
+// true
+
+ls.set(&#39;no&#39;, serialize( false ));
+value = deserialize( ls.get(&#39;no&#39;) );
+console.log( value );
+// false
+
+// and of course whole JavaScript objects
+var data = {
+  str: &#39;A string&#39;,
+  num: 98765,
+  bool: true,
+  list: [1, 2, 3, 4, 5]
+};
+
+ls.set(&#39;data&#39;, serialize( data ));
+value = deserialize( ls.get(&#39;data&#39;) );
+console.log( value );
+/*
+{
+  str: &#39;A string&#39;,
+  num: 98765,
+  bool: true,
+  list: [1, 2, 3, 4, 5]
+}
+*/</code></pre>
+<p><a name="api"></a></p>
+<h2>API</h2>
+<h4>setItem(key, value)</h4>
+<p>Aliases: set</p>
+<p>Store <code>value</code> identified by <code>key</code></p>
+<h4>getItem(key)</h4>
+<p>Aliases: get</p>
+<p>Retrieve <code>value</code> stored with <code>key</code></p>
+<h4>removeItem(key)</h4>
+<p>Aliases: remove(key)</p>
+<p>Delete the <code>value</code> stored with <code>key</code></p>
+</article></div></main><footer><div class="row centered"><div class="col-12"> <small>Copyright &amp;copy; 2014 Rudy Lattae</small></div></div></footer><script type="text/javascript" src="lib/prism.js"></script></body></html>
