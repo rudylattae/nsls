@@ -1,5 +1,5 @@
 /*!
-  nsls v0.0.0 -- Micro namespaced localStorage
+  nsls v0.1.0-a -- Micro namespaced localStorage
   http://rudylattae.github.io/tote
   (c) 2014 Rudy Lattae <rudylattae@gmail.com>, MIT License
  */

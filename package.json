@@ -1,6 +1,6 @@
 {
   "name": "nsls",
-  "version": "0.0.0",
+  "version": "0.1.0-a",
   "description": "Micro namespaced localStorage",
   "homepage": "http://rudylattae.github.io/tote",
   "main": "nsls.js",
